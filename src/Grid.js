@@ -26,7 +26,7 @@ export const GridImage = styled.div`
   background-position: 50%;
 `;
 
-const GridItemWrapper = styled.div`
+const GridItemWrapper1 = styled.div`
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -38,66 +38,62 @@ const GridItemWrapper = styled.div`
     grid-template-columns: 1fr 1fr!important;
   }
 
-  // :before {
-  //   content: "";
-  //   display: table;
-  //   padding-top: 100%;
-  // }
-//-----------------------------
-
-  //option 1
-  // :nth-child(6){
-  //   grid-column: span 2; 
-  //   grid-row: span 2;
-  // }
-  // :nth-child(5){
-  //   grid-column: span 2;
-  //   grid-row: span 2;
-  // }
-
-  // //option 2
-  // :nth-child(2){
-  //   grid-column: span 3; 
-  //   grid-row: span 3;
-  // }
-  // :nth-child(5){
-  //   grid-column: span 2;
-  //   grid-row: span 2;
-  // }
-
-  //option repeat  --------------------------
-  // :nth-child(3n){
-  //   grid-column: span 2;
-  //   grid-row: span 2;
-  // }
-
   //option breedbeeld ------------------------
-  // grid-column:span 2;
+  grid-column:span 2;
+
+`;
+
+const GridItemWrapper2 = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-self: stretch;
+  box-sizing: border-box;
 
   //option super breedbeeld
-  // grid-column:span 4;
+  grid-column:span 4;
 
-  // option 3 custom -----------------------
-  // :nth-child(10n +1){
-  //   grid-column: span 2;
-  //   grid-row: span 2;
-  // }
-  // :nth-child(10n +2){
-  //   grid-column: span 2;
-  // }
-  // :nth-child(10n +3){
-  //   grid-column: span 2;
-  // }
-  // :nth-child(10n +4){
-  //   grid-column: span 2;
-  // }
-  // :nth-child(10n +5){
-  //   grid-column: span 2;
-  //   grid-row: span 2;
-  // }
-  // :nth-child(10n +6){
-  //   grid-column: span 2;
-  // }
+
+`;
+
+const GridItemWrapper3 = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-self: stretch;
+  box-sizing: border-box;
+
+  //option 3 custom -----------------------
+  :nth-child(10n +1){
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  :nth-child(10n +2){
+    grid-column: span 2;
+  }
+  :nth-child(10n +3){
+    grid-column: span 2;
+  }
+  :nth-child(10n +4){
+    grid-column: span 2;
+  }
+  :nth-child(10n +5){
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  :nth-child(10n +6){
+    grid-column: span 2;
+  }
+
+
+`;
+
+const GridItemWrapper4 = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-self: stretch;
+  box-sizing: border-box;
 
   //option 4 custom -------------------------
     :nth-child(10n +1){
@@ -129,10 +125,27 @@ const GridItemWrapper = styled.div`
       grid-column: span 2;
     }
 
+
 `;
 
-export const GridItem = ({ forwardedRef, ...props }) => (
-  <GridItemWrapper ref={forwardedRef} {...props} />
-);
+export const GridItem = ({ forwardedRef, ...props }) => {
+  switch(props.currentStyle) {
+    case 'option1':
+      return <GridItemWrapper1 ref={forwardedRef} {...props} />
+      break;
+      case 'option2':
+      return <GridItemWrapper2 ref={forwardedRef} {...props} />
+      break;
+      case 'option3':
+      return <GridItemWrapper3 ref={forwardedRef} {...props} />
+      break;
+      case 'option4':
+      return <GridItemWrapper4 ref={forwardedRef} {...props} />
+      break;
+      default:
+        return <GridItemWrapper4 ref={forwardedRef} {...props} />
+        break;
+}
+};
 
 

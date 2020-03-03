@@ -15,7 +15,7 @@ const DragItem = memo(({ id, onMoveItem, children }) => {
 
   const [, connectDrop] = useDrop({
     accept: "IMG",
-    hover(hoveredOverItem) {
+    drop(hoveredOverItem) {
       if (hoveredOverItem.id !== id) {
         onMoveItem(hoveredOverItem.id, id);
       }

@@ -27,7 +27,9 @@ export class GridProvider extends Component {
     this.state = {
       items: sampleItems,
       moveItem: this.moveItem,
-      setItems: this.setItems
+      setItems: this.setItems,
+      changeStyle: this.changeStyle,
+      currentStyle: 'option4'
     };
   }
 
@@ -40,9 +42,14 @@ export class GridProvider extends Component {
     );
   }
 
+  changeStyle = newStyle => this.setState({currentStyle: newStyle});
+
   setItems = items => this.setState({ items });
 
   moveItem = (sourceId, destinationId) => {
+
+    let newItems = this.state.items;
+
     const sourceIndex = this.state.items.findIndex(
       item => item.id === sourceId
     );
@@ -54,6 +61,27 @@ export class GridProvider extends Component {
     if (sourceId === -1 || destinationId === -1) {
       return;
     }
+
+    console.log(sourceId);
+    console.log(destinationId);
+
+    let sourceItem = this.state.items.find(item => item.id === sourceId);
+    let destinationItem = this.state.items.find(item => item.id === destinationId);
+
+    console.log(sourceItem);
+    console.log(destinationItem);
+    
+
+    newItems[sourceIndex] = destinationItem;
+    newItems[destinationIndex] = sourceItem;
+
+    this.setState(state => ({
+      items: newItems
+    }));
+
+    return;
+
+
 
     const offset = destinationIndex - sourceIndex;
 
