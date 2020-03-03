@@ -32,6 +32,7 @@ export class GridProvider extends Component {
   }
 
   render() {
+
     return (
       <GridContext.Provider value={this.state}>
         {this.props.children}
